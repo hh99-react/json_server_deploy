@@ -1,8 +1,15 @@
 {
-  "memo": [
+  "todos": [
     {
       "id": 1,
       "title": "react"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "title": "react is good",
+      "todoId": "1"
     }
   ]
 }

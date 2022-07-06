@@ -6,7 +6,7 @@ function App() {
   const [memoes, setMemoes] = useState(null);
   const fetcher = async () => {
     const { data } = await axios.get(
-      "https://my-app-json-server-deploy.herokuapp.com/memo"
+      "https://my-app-json-server-deploy.herokuapp.com/todos"
     );
     setMemoes(data);
     return data;
@@ -24,7 +24,7 @@ function App() {
     };
 
     await axios.post(
-      "https://my-app-json-server-deploy.herokuapp.com/memo",
+      "https://my-app-json-server-deploy.herokuapp.com/todos",
       memoDto
     );
     fetcher();
