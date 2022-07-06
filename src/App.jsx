@@ -3,9 +3,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
+  console.log();
   const [memoes, setMemoes] = useState(null);
   const fetcher = async () => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/todos`);
+    const { data } = await axios.get(
+      process.env.NODE_ENV === "development"
+        ? `${process.env.REACT_APP_API_URL}/todos`
+        : `/todos`
+    );
     setMemoes(data);
     return data;
   };
@@ -23,7 +28,12 @@ function App() {
       title,
     };
 
-    await axios.post(`${process.env.REACT_APP_API_URL}/todos`, memoDto);
+    await axios.post(
+      process.env.NODE_ENV === "development"
+        ? `${process.env.REACT_APP_API_URL}/todos`
+        : `/todos`,
+      memoDto
+    );
     fetcher();
   };
 
