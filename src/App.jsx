@@ -5,7 +5,9 @@ import axios from "axios";
 function App() {
   const [memoes, setMemoes] = useState(null);
   const fetcher = async () => {
-    const { data } = await axios.get("http://localhost:3001/memo");
+    const { data } = await axios.get(
+      "https://my-app-json-server-deploy.herokuapp.com/memo"
+    );
     setMemoes(data);
     return data;
   };
@@ -21,7 +23,10 @@ function App() {
       title,
     };
 
-    await axios.post("http://localhost:3001/memo", memoDto);
+    await axios.post(
+      "https://my-app-json-server-deploy.herokuapp.com/memo",
+      memoDto
+    );
     fetcher();
   };
 
