@@ -5,9 +5,7 @@ import axios from "axios";
 function App() {
   const [memoes, setMemoes] = useState(null);
   const fetcher = async () => {
-    const { data } = await axios.get(
-      "https://my-app-json-server-deploy.herokuapp.com/todos"
-    );
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/todos`);
     setMemoes(data);
     return data;
   };
@@ -16,6 +14,8 @@ function App() {
     fetcher();
   }, []);
 
+  console.log(process.env.REACT_APP_API_URL);
+
   const [title, setTitle] = useState("");
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -23,10 +23,7 @@ function App() {
       title,
     };
 
-    await axios.post(
-      "https://my-app-json-server-deploy.herokuapp.com/todos",
-      memoDto
-    );
+    await axios.post(`${process.env.REACT_APP_API_URL}/todos`, memoDto);
     fetcher();
   };
 
